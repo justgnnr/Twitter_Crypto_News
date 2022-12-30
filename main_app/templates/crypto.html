@@ -1,41 +1,11 @@
+	{% for coin in coins %}
+
           <div class="crypto_item">
-	    <a href="https://www.google.com"><h2>Bitcoin</h2></a>
-	    <p>$16,844.51</p>
+		  <a href="https://www.google.com"><h2>{{coin.name}}</h2></a>
+		  <p>{{coin.price}}</p>
 	  </div>
-          <div class="crypto_item">
-	    <a href="https://www.google.com"><h2>Ethereum</h2></a>
-	    <p>$16,844.51</p>
-	  </div>
-          <div class="crypto_item">
-	    <a href="https://www.google.com"><h2>Tether</h2></a>
-	    <p>$16,844.51</p>
-	  </div>
-          <div class="crypto_item">
-	    <a href="https://www.google.com"><h2>USD Coin</h2></a>
-	    <p>$16,844.51</p>
-	  </div>
-          <div class="crypto_item">
-	    <a href="https://www.google.com"><h2>BNB</h2></a>
-	    <p>$16,844.51</p>
-	  </div>
-          <div class="crypto_item">
-	    <a href="https://www.google.com"><h2>XRP</h2></a>
-	    <p>$16,844.51</p>
-	  </div>
-          <div class="crypto_item">
-	    <a href="https://www.google.com"><h2>Binance</h2></a>
-	    <p>$16,844.51</p>
-	  </div>
-          <div class="crypto_item">
-	    <a href="https://www.google.com"><h2>Dogecoin</h2></a>
-	    <p>$16,844.51</p>
-	  </div>
-          <div class="crypto_item">
-	    <a href="https://www.google.com"><h2>Cardano</h2></a>
-	    <p>$16,844.51</p>
-	  </div>
-          <div class="crypto_item">
-	    <a href="https://www.google.com"><h2>Polygon</h2></a>
-	    <p>$16,844.51</p>
-	  </div>
+
+
+	{% endfor %}
+
 

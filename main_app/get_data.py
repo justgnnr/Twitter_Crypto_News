@@ -20,5 +20,7 @@ def index():
     tweets = db.execute(
         "SELECT * from tweets"
     ).fetchall()
-    print(tweets)
-    return render_template("index.html", tweets=tweets)
+    coins = db.execute(
+        "SELECT * from top_coins"
+    ).fetchall()
+    return render_template("index.html", tweets=tweets, coins=coins)
