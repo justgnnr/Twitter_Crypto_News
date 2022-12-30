@@ -14,7 +14,7 @@ from main_app.db import get_db
 bp = Blueprint("get_data", __name__)
 
 
-@bp.route("/data")
+@bp.route("/")
 def index():
     db = get_db()
     tweets = db.execute(
