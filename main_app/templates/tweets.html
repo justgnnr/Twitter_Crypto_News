@@ -1,30 +1,7 @@
-        <a href="https://www.twitter.com" class="tweet">
-              <p>James Smith</p>
-              <p> Posted at 3:15pm</p>
-              <p>This crypto shit is awesome</p>
+	{% for tweet in tweets %}
+	<a href="{{tweet.url}}" class="tweet">
+	  <p>{{tweet.user_name}}</p>
+	  <p>{{tweet.created_at}}</p>
+	  <p>{{tweet.text}}</p>
         </a>
-        <a href="https://www.twitter.com" class="tweet">
-              <p>James Smith</p>
-              <p> Posted at 3:15pm</p>
-              <p>This crypto shit is awesome</p>
-        </a>
-        <a href="https://www.twitter.com" class="tweet">
-          <p>James Smith</p>
-          <p> Posted at 3:15pm</p>
-          <p>This crypto shit is awesome</p>
-        </a>
-        <a href="https://www.twitter.com" class="tweet">
-          <p>James Smith</p>
-          <p> Posted at 3:15pm</p>
-          <p>This crypto shit is awesome</p>
-        </a>
-        <a href="https://www.twitter.com" class="tweet">
-          <p>James Smith</p>
-          <p> Posted at 3:15pm</p>
-          <p>This crypto shit is awesome</p>
-        </a>
-        <a href="https://www.twitter.com" class="tweet">
-          <p>James Smith</p>
-          <p> Posted at 3:15pm</p>
-          <p>This crypto shit is awesome</p>
-        </a>
+	{% endfor %}

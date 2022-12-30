@@ -24,7 +24,7 @@ cur = con.cursor()
 #cur.execute("CREATE TABLE IF NOT EXISTS tweets(tweet_id, user_name, text, created_at, url)")
 
 
-results = api.search_tweets("Bitcoin", count=10)
+results = api.search_tweets("crypto", count=10)
 
 #data = []
 
