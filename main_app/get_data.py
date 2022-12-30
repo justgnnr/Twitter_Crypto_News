@@ -21,6 +21,6 @@ def index():
         "SELECT * from tweets"
     ).fetchall()
     coins = db.execute(
-        "SELECT * FROM top_coins ORDER BY time_now DESC LIMIT 10;"
+        "SELECT * FROM top_coins ORDER BY time_now LIMIT 10;"
     ).fetchall()
     return render_template("index.html", tweets=tweets, coins=coins)
