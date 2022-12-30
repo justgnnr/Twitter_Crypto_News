@@ -18,10 +18,10 @@ auth = tweepy.OAuth1UserHandler(
 api = tweepy.API(auth)
 
 
-con = sqlite3.connect('twitter.db')
+con = sqlite3.connect('../instance/crypto_tweet.sqlite')
 cur = con.cursor()
 
-cur.execute("CREATE TABLE IF NOT EXISTS tweets(tweet_id, user_name, text, created_at, url)")
+#cur.execute("CREATE TABLE IF NOT EXISTS tweets(tweet_id, user_name, text, created_at, url)")
 
 
 results = api.search_tweets("Bitcoin", count=10)

@@ -1,5 +1,5 @@
-DROP TABLE IF EXISTS tweets
-DROP TABLE IF EXISTS top_coins
+DROP TABLE IF EXISTS tweets;
+DROP TABLE IF EXISTS top_coins;
 
 CREATE TABLE tweets (
 	tweet_id, 
@@ -10,9 +10,11 @@ CREATE TABLE tweets (
 );
 
 CREATE TABLE top_coins(
-	date_time,
+	time_now,
 	ranking, 
 	name, 
 	price, 
 	day_change
 );
+
+

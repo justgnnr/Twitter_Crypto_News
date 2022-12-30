@@ -10,7 +10,7 @@ from datetime import datetime
 con = sqlite3.connect("crypto.db")
 cur = con.cursor()
 
-cur.execute("CREATE TABLE IF NOT EXISTS crypto_data(time_now, ranking, name, price, day_change)")
+#cur.execute("CREATE TABLE IF NOT EXISTS crypto_data(time_now, ranking, name, price, day_change)")
 
 
 r = requests.get('https://www.coingecko.com/')
@@ -46,7 +46,7 @@ for i in range(0, len(cleaned_2)):
 
     data_t = (time_now, ranking, name, price, day_change)
 
-    query = """INSERT INTO crypto_data(time_now, ranking, name, price, day_change) VALUES(?, ?, ?, ?, ?)"""
+    query = """INSERT INTO top_coins(time_now, ranking, name, price, day_change) VALUES(?, ?, ?, ?, ?)"""
 
     cur.execute(query, data_t)
 
