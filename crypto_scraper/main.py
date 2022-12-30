@@ -41,7 +41,10 @@ for i in range(0, len(cleaned_2)):
     time_now = str(datetime.now())
     ranking = cleaned_2[i][0]
     name = cleaned_2[i][1]
-    price = cleaned_2[i][3]
+    if name == "USD" or name == "Binance":
+        price = "$1.00"
+    else:
+        price = cleaned_2[i][3]
     day_change = cleaned_2[i][5]
 
     data_t = (time_now, ranking, name, price, day_change)
