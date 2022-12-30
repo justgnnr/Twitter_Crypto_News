@@ -21,7 +21,7 @@ api = tweepy.API(auth)
 con = sqlite3.connect('twitter.db')
 cur = con.cursor()
 
-cur.execute("CREATE TABLE IF NOT EXISTS tweets(tweet_id, user, text, created_at, url)")
+cur.execute("CREATE TABLE IF NOT EXISTS tweets(tweet_id, user_name, text, created_at, url)")
 
 
 results = api.search_tweets("Bitcoin", count=10)
@@ -30,7 +30,7 @@ results = api.search_tweets("Bitcoin", count=10)
 
 for i in range(len(results)):
     tweet_id = results[i].id
-    user = results[i].user.name
+    user_name = results[i].user.name
     text = results[i].text
     created_at = results[i].created_at.isoformat()
     try:
@@ -38,8 +38,8 @@ for i in range(len(results)):
     except:
         url = ''
 
-    data = (tweet_id, user, text, created_at, url)
-    query = """INSERT INTO tweets(tweet_id, user, text, created_at, url) VALUES(?, ?, ?, ?, ?)"""
+    data = (tweet_id, user_name, text, created_at, url)
+    query = """INSERT INTO tweets(tweet_id, user_name, text, created_at, url) VALUES(?, ?, ?, ?, ?)"""
 
     cur.execute(query, data)
 

@@ -4,12 +4,13 @@ import requests
 import re
 import sqlite3
 from bs4 import BeautifulSoup
+from datetime import datetime
 
 
 con = sqlite3.connect("crypto.db")
 cur = con.cursor()
 
-cur.execute("CREATE TABLE IF NOT EXISTS crypto_data(rank, name, price, day_change)")
+cur.execute("CREATE TABLE IF NOT EXISTS crypto_data(time_now, ranking, name, price, day_change)")
 
 
 r = requests.get('https://www.coingecko.com/')
@@ -37,14 +38,15 @@ for j in range(0, len(cleaned)):
 
 
 for i in range(0, len(cleaned_2)):
-    rank = cleaned_2[i][0]
+    time_now = str(datetime.now())
+    ranking = cleaned_2[i][0]
     name = cleaned_2[i][1]
     price = cleaned_2[i][3]
     day_change = cleaned_2[i][5]
 
-    data_t = (rank, name, price, day_change)
+    data_t = (time_now, ranking, name, price, day_change)
 
-    query = """INSERT INTO crypto_data(rank, name, price, day_change) VALUES(?, ?, ?, ?)"""
+    query = """INSERT INTO crypto_data(time_now, ranking, name, price, day_change) VALUES(?, ?, ?, ?, ?)"""
 
     cur.execute(query, data_t)
 
