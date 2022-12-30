@@ -7,7 +7,7 @@ from bs4 import BeautifulSoup
 from datetime import datetime
 
 
-con = sqlite3.connect("crypto.db")
+con = sqlite3.connect("../instance/crypto_tweet.sqlite")
 cur = con.cursor()
 
 #cur.execute("CREATE TABLE IF NOT EXISTS crypto_data(time_now, ranking, name, price, day_change)")
