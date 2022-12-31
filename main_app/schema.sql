@@ -3,6 +3,7 @@ DROP TABLE IF EXISTS top_coins;
 
 CREATE TABLE tweets (
 	tweet_id, 
+	topic,
 	user_name, 
 	text, 
 	created_at, 

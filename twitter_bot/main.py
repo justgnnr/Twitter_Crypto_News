@@ -5,60 +5,59 @@ import os
 import json
 import sqlite3
 
-
-consumer_key = os.environ.get('API_KEY')
-consumer_secret = os.environ.get('API_KEY_SECRET') 
-access_token = os.environ.get('ACCESS_TOKEN')
-access_token_secret = os.environ.get('ACCESS_TOKEN_SECRET')
-
-auth = tweepy.OAuth1UserHandler(
-   consumer_key, consumer_secret, access_token, access_token_secret
-)
-
-api = tweepy.API(auth)
+search_terms = ["Crypto", "Bitcoin", "Ethereum", "Tether", "USD", "BNB", "XRP", "Binance", "Dogecoin", "Cardano", "Polygon"]
 
 
-con = sqlite3.connect('../instance/crypto_tweet.sqlite')
-cur = con.cursor()
+def auth():
+    consumer_key = os.environ.get('API_KEY')
+    consumer_secret = os.environ.get('API_KEY_SECRET') 
+    access_token = os.environ.get('ACCESS_TOKEN')
+    access_token_secret = os.environ.get('ACCESS_TOKEN_SECRET')
 
-#cur.execute("CREATE TABLE IF NOT EXISTS tweets(tweet_id, user_name, text, created_at, url)")
+    auth = tweepy.OAuth1UserHandler(
+        consumer_key, consumer_secret, access_token, access_token_secret
+    )
+
+    api = tweepy.API(auth)
+
+    return (api)
+
+def search_tweets(search_term, api, cur, con):
+
+    results = api.search_tweets(search_term, count=10)
 
 
-results = api.search_tweets("crypto", count=10)
+    for i in range(len(results)):
+        tweet_id = results[i].id
+        topic = search_term
+        user_name = results[i].user.name
+        text = results[i].text
+        created_at = results[i].created_at.isoformat()
+        try:
+            url = results[i].entities['urls'][0]['expanded_url']
+        except:
+            url = ''
 
-#data = []
+        data = (tweet_id, topic, user_name, text, created_at, url)
+        query = """INSERT INTO tweets(tweet_id, topic, user_name, text, created_at, url) VALUES(?, ?, ?, ?, ?, ?)"""
 
-for i in range(len(results)):
-    tweet_id = results[i].id
-    user_name = results[i].user.name
-    text = results[i].text
-    created_at = results[i].created_at.isoformat()
-    try:
-        url = results[i].entities['urls'][0]['expanded_url']
-    except:
-        url = ''
+        cur.execute(query, data)
 
-    data = (tweet_id, user_name, text, created_at, url)
-    query = """INSERT INTO tweets(tweet_id, user_name, text, created_at, url) VALUES(?, ?, ?, ?, ?)"""
+        con.commit()
 
-    cur.execute(query, data)
-
-    con.commit()
-
-#    tweet = {
-#       "id": tweet_id,
-#       "user": user,
-#       "text": text,
-#       "created_at": created_at,
-#       "url": url
-#    }
+    print("Results added to database")
 
 
 
-#    data.append(tweet)
+if __name__ == "__main__":
+    con = sqlite3.connect('../instance/crypto_tweet.sqlite')
+    cur = con.cursor()
+    # cur.execute("CREATE TABLE IF NOT EXISTS tweets(tweet_id, topic, user_name, text, created_at, url)")
 
-#with open( "datafile.json" , "w" ) as write:
-#    json.dump( data , write )
+    api = auth()
 
+    for i in range(0, len(search_terms)):
+        search_tweets(search_terms[i], api, cur, con)
 
+    print("Done")
 
