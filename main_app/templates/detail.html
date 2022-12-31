@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Twitter Crypto News</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="static/styles.css">
+  </head>
+  <body>
+    <div class="main_container">
+      <div class="twitter_feed">
+        {% include "tweets.html" %}
+      </div>
+      <div class="grid_container">
+        <div class="crypto_grid">
+          <div class="title"><h1>Twitter Crypto News</h1></div>
+	    <div>
+		    <h1>{{ coin.name }}</h1>
+		    <p>{{ coin.price }}</p>
+		    <p>{{ coin.day_change }}</p>
+	    </div>
+        </div>
+      </div>
+      <div class="twitter_feed">
+        {% include "tweets.html" %}
+      </div>
+
+  </body>
+</html>
