@@ -1,6 +1,6 @@
 {% for coin in coins %}
     <div class="crypto_item">
-      <a href="https://www.google.com"><h2>{{coin.name}}</h2></a>
+	    <a href="{{ url_for('get_data.detail_view', name=coin.name) }}"><h2>{{coin.name}}</h2></a>
       <p>{{coin.price}}</p>
     </div>
 {% endfor %}
