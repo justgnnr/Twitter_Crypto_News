@@ -28,8 +28,10 @@ def index():
 def detail_view(name):
     db = get_db()
     coin = db.execute(
-        "SELECT * FROM top_coins ORDER BY time_now LIMIT 10;"
+        f"SELECT * FROM top_coins WHERE name LIKE '{name}%';"
     ).fetchone()
+    if coin is None:
+        abort(404)
     tweets = db.execute(
         "SELECT * from tweets"
     ).fetchall()
