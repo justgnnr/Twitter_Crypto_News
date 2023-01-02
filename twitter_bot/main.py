@@ -5,7 +5,7 @@ import os
 import json
 import sqlite3
 
-search_terms = ["Crypto", "Bitcoin", "Ethereum", "Tether", "USD", "BNB", "XRP", "Binance", "Dogecoin", "Cardano", "Polygon"]
+search_terms = ["Cryptocurrencies", "Cryptocurrency", "Crypto", "crypto", "Bitcoin", "Ethereum", "Tether", "USD", "BNB", "XRP", "Binance", "Dogecoin", "Cardano", "Polygon"]
 
 
 def auth():
@@ -38,6 +38,7 @@ def search_tweets(search_term, api, cur, con):
             break
 
         print("Got there")
+        print(url)
         tweet_id = results[i].id
         topic = search_term
         user_name = results[i].user.name
