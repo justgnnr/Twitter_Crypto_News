@@ -1,3 +1,5 @@
+
+
 body {
   padding: 0;
   margin: 0;
@@ -42,16 +44,74 @@ a:hover {
   flex-direction: column;
   justify-content: space-around;
   max-width: 150px;
-}
-
-.crypto_detail {
+  font-family: 'Source Code Pro', monospace;
 
 }
 
 
+/*----------Mobile-----------*/
 
+@media only screen
+  and (min-device-width: 600px)
+  and (max-device-width: 915px)
+  and (orientation: landscape) {
+
+  .twitter_feed {
+    max-width: 300px;
+  } 
+
+}
+
+
+
+/*----------Tablet-----------*/
+
+/* Portrait */
+@media only screen 
+  and (min-device-width: 768px) 
+  and (max-device-width: 1024px) 
+  and (orientation: portrait) 
+  and (-webkit-min-device-pixel-ratio: 1) {
+
+
+}
+
+/* Landscape */
+@media only screen 
+  and (min-device-width: 540px) 
+  and (max-device-width: 720px) 
+  and (orientation: landscape) 
+  and (-webkit-min-device-pixel-ratio: 1) {
+
+  .twitter_feed {
+    max-width: 200px;
+  }
+   
+  .main_container {
+    grid-gap: 8em;
+  }
+
+
+}
+
+
+
+/*---------Laptop------------*/
 
 @media screen 
-  and (min-device-width: 1200px) 
+  and (min-device-width: 920px) 
   and (max-device-width: 1600px)  { 
+ 
+  .twitter_feed {
+    max-width: 600px;
+  }
+
+    
+  .grid_container {
+    left: 7rem;
+  }
+
+
 }
+
+
