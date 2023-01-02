@@ -11,18 +11,15 @@
   </head>
   <body>
     <div class="main_container">
-      <div class="twitter_feed">
-        {% include "tweets.html" %}
-      </div>
       <div class="grid_container">
+        <div class="title"><h1>Twitter Crypto News</h1></div>
         <div class="crypto_grid">
-          <div class="title"><h1>Twitter Crypto News</h1></div>
           {% include "crypto.html" %}
         </div>
       </div>
       <div class="twitter_feed">
         {% include "tweets.html" %}
       </div>
-
+    </div>
   </body>
 </html>
