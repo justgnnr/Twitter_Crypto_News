@@ -15,8 +15,11 @@
 	      <div class="title"><a href="{{ url_for('get_data.index')}}"><h1>Twitter Crypto News</h1></a></div>
         <div class="crypto_detail">
 	    <h1>{{ coin.name }}</h1>
-            <p>{{ coin.price }}</p>
-            <p>{{ coin.day_change }}</p>
+            <h2>{{ coin.price }}</h2>
+            <h2>{{ coin.day_change }}</h2>
+	    <p>Updated every 15min.</p>
+	    <p>All data from <a href="https://www.coingecko.com/">CoinGecko</a>.</p> 
+	    <p>Made by <a href="https://www.gunnarbachelor.com">Gunnar</a>.</p>
         </div>
       </div>
       <div class="twitter_feed">
