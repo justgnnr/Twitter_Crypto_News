@@ -28,15 +28,21 @@ def search_tweets(search_term, api, cur, con):
 
 
     for i in range(len(results)):
+        try:
+            url = results[i].entities['urls'][0]['expanded_url']
+            print(f"This is the url: {url}", url)
+            if url == None or url == '':
+                break
+        except:
+            print("Bullshit")
+            break
+
+        print("Got there")
         tweet_id = results[i].id
         topic = search_term
         user_name = results[i].user.name
         text = results[i].text
         created_at = results[i].created_at.isoformat()
-        try:
-            url = results[i].entities['urls'][0]['expanded_url']
-        except:
-            url = ''
 
         data = (tweet_id, topic, user_name, text, created_at, url)
         query = """INSERT INTO tweets(tweet_id, topic, user_name, text, created_at, url) VALUES(?, ?, ?, ?, ?, ?)"""
@@ -45,7 +51,7 @@ def search_tweets(search_term, api, cur, con):
 
         con.commit()
 
-    print("Results added to database")
+        print("Results added to database")
 
 
 

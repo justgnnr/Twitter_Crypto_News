@@ -17,7 +17,7 @@ bp = Blueprint("get_data", __name__)
 def index():
     db = get_db()
     tweets = db.execute(
-        f"SELECT * from tweets WHERE topic LIKE 'crypto%' ORDER BY created_at LIMIT 10;"
+        f"SELECT * from tweets WHERE topic LIKE 'crypto%' ORDER BY created_at DESC LIMIT 10;"
     ).fetchall()
     coins = db.execute(
         "SELECT * FROM top_coins ORDER BY time_now LIMIT 10;"
@@ -34,7 +34,7 @@ def detail_view(name):
     if coin is None:
         abort(404)
     tweets = db.execute(
-        f"SELECT * from tweets Where topic LIKE '{name}%';"
+        f"SELECT * from tweets Where topic LIKE '{name}%' ORDER BY created_at DESC;"
     ).fetchall()
 
     return render_template("detail.html", name=name, coin=coin, tweets=tweets)
