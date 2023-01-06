@@ -30,15 +30,11 @@ def search_tweets(search_term, api, cur, con):
     for i in range(len(results)):
         try:
             url = results[i].entities['urls'][0]['expanded_url']
-            print(f"This is the url: {url}", url)
             if url == None or url == '':
                 break
         except:
-            print("Bullshit")
             break
 
-        print("Got there")
-        print(url)
         tweet_id = results[i].id
         topic = search_term
         user_name = results[i].user.name
@@ -52,14 +48,13 @@ def search_tweets(search_term, api, cur, con):
 
         con.commit()
 
-        print("Results added to database")
+        print("Results added to database.")
 
 
 
 if __name__ == "__main__":
     con = sqlite3.connect('../instance/crypto_tweet.sqlite')
     cur = con.cursor()
-    # cur.execute("CREATE TABLE IF NOT EXISTS tweets(tweet_id, topic, user_name, text, created_at, url)")
 
     api = auth()
 
@@ -67,4 +62,3 @@ if __name__ == "__main__":
         search_tweets(search_terms[i], api, cur, con)
 
     print("Done")
-

@@ -17,7 +17,7 @@ bp = Blueprint("get_data", __name__)
 def index():
     db = get_db()
     tweets = db.execute(
-        f"SELECT * from tweets WHERE topic LIKE 'Crypto' OR 'crypto%' ORDER BY created_at DESC LIMIT 10;"
+        f"SELECT * from tweets WHERE topic LIKE 'Crytocurrency%' OR topic LIKE 'Cryptocurrencies%' OR topic LIKE 'Crypto%' OR topic LIKE 'crypto%' ORDER BY created_at DESC LIMIT 10;"
     ).fetchall()
     coins = db.execute(
         "SELECT * FROM top_coins ORDER BY time_now LIMIT 10;"
