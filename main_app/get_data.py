@@ -6,6 +6,8 @@ from flask import render_template
 from flask import request
 from flask import url_for
 from werkzeug.exceptions import abort
+from datetime import datetime
+
 
 from main_app.db import get_db
 
@@ -19,17 +21,18 @@ def index():
     tweets = db.execute(
         f"SELECT * from tweets WHERE topic LIKE 'Crytocurrency%' OR topic LIKE 'Cryptocurrencies%' OR topic LIKE 'Crypto%' OR topic LIKE 'crypto%' ORDER BY created_at DESC LIMIT 10;"
     ).fetchall()
+
     coins = db.execute(
         "SELECT * FROM top_coins ORDER BY time_now LIMIT 10;"
     ).fetchall()
-    print(tweets)
+    print(coins)
     return render_template("index.html", tweets=tweets, coins=coins)
 
 @bp.route("/<name>")
 def detail_view(name):
     db = get_db()
     coin = db.execute(
-        f"SELECT * FROM top_coins WHERE name LIKE '{name}%';"
+        f"SELECT * FROM top_coins WHERE name LIKE '{name}%' ORDER BY ranking;"
     ).fetchone()
     if coin is None:
         abort(404)

@@ -10,6 +10,10 @@ from datetime import datetime
 con = sqlite3.connect("../instance/crypto_tweet.sqlite")
 cur = con.cursor()
 
+del_query = """DELETE FROM top_coins"""
+
+cur.execute(del_query)
+
 r = requests.get('https://www.coingecko.com/')
 
 soup = BeautifulSoup(r.text, 'html.parser')
@@ -39,7 +43,7 @@ for i in range(0, len(cleaned_2)):
     ranking = cleaned_2[i][0]
     name = cleaned_2[i][1]
     if name == "USD" or name == "Binance":
-        price = "$1.00"
+        price = cleaned_2[i][4]
     else:
         price = cleaned_2[i][3]
     day_change = cleaned_2[i][5]

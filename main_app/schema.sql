@@ -2,7 +2,7 @@ DROP TABLE IF EXISTS tweets;
 DROP TABLE IF EXISTS top_coins;
 
 CREATE TABLE tweets (
-	tweet_id, 
+	tweet_id INTEGER PRIMARY KEY, 
 	topic,
 	user_name, 
 	text, 
